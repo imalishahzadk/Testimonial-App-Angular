@@ -1,0 +1,17 @@
+<div class="testimonials-container">
+    <h1>Testimonials</h1>
+    <div *ngFor="let testimonial of testimonials" class="testimonial-item">
+      <p><strong>{{ testimonial.name }}</strong>: {{ testimonial.message }}</p>
+    </div>
+    <div class="add-testimonial-form">
+      <input [(ngModel)]="newName" placeholder="Your Name" class="input-name">
+      <button (click)="addTestimonial()" class="btn">Add Testimonial</button>
+    </div>
+  
+    <app-testimonials-include-testimonial
+      *ngIf="showIncludeTestimonial"
+      [name]="newName"
+      (testimonialSubmitted)="onTestimonialSubmitted($event)">
+    </app-testimonials-include-testimonial>
+  </div>
+  
